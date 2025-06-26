@@ -1,0 +1,49 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 16px;  
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 60rem;
+  height: 18rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  position: relative;
+  color: #6a1b9a;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+ .imdb{
+  position: relative;
+  left: -25rem;
+  top: -0.5rem;
+  color: #444;
+  font-size: 1.1rem;
+}
+ .info{
+  text-align: left;
+  position: relative;
+  margin: 0.4rem;
+  left: 10rem;
+  top: -13rem;
+  color: #000000;
+  font-size: 1rem;
+  max-width: 30rem;
+  
+}
+.card img {
+  position: relative;
+  background-color: #6a1b9a;
+  max-width: 130px;
+  border-radius: 10px;
+  
+  top: -1rem;
+}

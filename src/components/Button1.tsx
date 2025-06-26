@@ -1,14 +1,16 @@
-import "./Button1.css";
+import "./css/Button1.css";
 interface props {
-  onClick: () => void;
   id?: string;
-  name: string;
+  name?: string;
+  onClick?: () => void;
+  children?: React.ReactNode;
 }
-function Button1({ name, id, onClick }: props) {
+function Button1({ name, id, children, onClick }: props) {
   return (
-    <button onClick={onClick} id={id}>
+    <div id={id} onClick={onClick}>
       {name}
-    </button>
+      {children}
+    </div>
   );
 }
 

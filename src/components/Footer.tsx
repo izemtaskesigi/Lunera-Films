@@ -1,8 +1,8 @@
-import "./Footer.css";
+import "./css/Footer.css";
 function Footer() {
   return (
     <footer>
-      <p>&copy; 2025 Aura. Tüm hakları saklıdır.</p>
+      <p>&copy; 2025 Movieland. Tüm hakları saklıdır.</p>
     </footer>
   );
 }

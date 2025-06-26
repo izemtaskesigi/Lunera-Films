@@ -7,21 +7,21 @@
 header {
   text-align: center;
   padding: 60px 20px 40px;
-  background-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(8px);
-  border-bottom: 2px solid #ddd;
+  margin-top: 11rem;
+  margin-bottom: 14rem;
 }
 
 
 header h1 {
   font-size: 2.5rem;
-  color: #6a1b9a;
+  color: #ecdaf7;
   margin-bottom: 10px;
 }
 
 header p {
   font-size: 1.2rem;
-  color: #555;
+  color: #aea1b6;
   margin-bottom: 20px;
 }
 

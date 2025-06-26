@@ -6,7 +6,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+  background: linear-gradient(#18061A,#240829,#3C0C46,#480D54,#480D54,#300A37);
   color: #333;
   min-height: 100vh;
   display: flex;

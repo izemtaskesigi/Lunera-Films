@@ -1,15 +1,16 @@
-import "./TopBar.css";
-import Button1 from "./Button1";
+import "./css/TopBar.css";
+import SearchBar from "./SearchBar";
+
 interface props {
-  scroll?: () => void;
+  onSearch: (query: string) => void;
   id?: string;
 }
-function TopBar({ scroll, id }: props) {
+function TopBar({ onSearch, id }: props) {
   return (
     <header id={id}>
-      <h1>✨ Aura'ya Hoş Geldin!</h1>
-      <p>PDF'lerini yükle, AI destekli özetler ve sınavlar hazırlansın!</p>
-      <Button1 name="Hemen Başla" id="start-btn" onClick={() => scroll} />
+      <h1>🎬 Film Land'e Hoşgeldin!</h1>
+      <p>Bir konu yaz, sana uygun filmleri bulalım!</p>
+      <SearchBar search={onSearch}></SearchBar>
     </header>
   );
 }

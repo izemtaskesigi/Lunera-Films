@@ -1,0 +1,38 @@
+
+#start-btn,#uploadBut{
+  display: inline-block;
+  white-space: nowrap;
+  background-color: #6a1b9a;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+}
+
+#start-btn:hover ,#uploadBut:hover {
+  background-color: #8e24aa;
+}
+#search-btn{
+  display: inline-block;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #58aeb9, #875ba9);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 15px;
+  
+}
+
+#search-btn:hover {
+  background: linear-gradient(135deg, #7df0ffe1, #cd8bffd3);;
+}

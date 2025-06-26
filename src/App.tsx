@@ -1,28 +1,34 @@
 import TopBar from "./components/TopBar";
 import Section from "./components/Section.tsx";
 import Footer from "./components/Footer.tsx";
+import { useState } from "react";
 
-const scroll = (element: string) => {
-  const el = document.getElementById(element);
-  if (el) {
-    el.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+const showContainer = () => {
+  const section = document.getElementById("container");
+  console.log("girdi");
+  if (section) {
+    section.style.display = "block";
+    setTimeout(() => {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 50);
   }
 };
-
 function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    showContainer();
+    console.log(query);
+  };
   return (
     <>
-      <TopBar
-        scroll={() => {
-          scroll("top");
-        }}
-      />
-      <Section />
+      <TopBar onSearch={handleSearch} />
+      <Section id="container" query={searchQuery} />
       <Footer />
-      <TopBar id="top" />
     </>
   );
 }
