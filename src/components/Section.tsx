@@ -2,10 +2,9 @@ import Card from "./Card.tsx";
 import "./css/Section.css";
 interface props {
   id: string;
-  query: string;
+  info: any | null;
 }
-function Section({ id, query }: props) {
-  const querys = query;
+function Section({ id, info }: props) {
   const data = {
     title: "Inception",
     overview:
@@ -20,8 +19,8 @@ function Section({ id, query }: props) {
       <section className="examples" id={id}>
         <div className="cards">
           <Card
-            title={data.title}
-            overview={data.overview}
+            title={info.name}
+            overview={info.status}
             releaseDate={data.release_date}
             imageUrl="https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_FMjpg_UX1000_.jpg"
             imdb={data.vote_average}

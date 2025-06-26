@@ -18,16 +18,31 @@ const showContainer = () => {
 };
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [apiData, setApiData] = useState<any>(null);
 
-  const handleSearch = (query: string) => {
+  const handleSearch = async (query: string) => {
     setSearchQuery(query);
     showContainer();
     console.log(query);
+
+    try {
+      const response = await fetch(
+        `https://rickandmortyapi.com/api/character/${query}`
+      );
+
+      if (!response.ok) throw new Error("API isteği başarısız");
+
+      const data = await response.json();
+      console.log("API cevabı:", data);
+      setApiData(data);
+    } catch (error) {
+      console.error("API isteği hatası:", error);
+    }
   };
   return (
     <>
       <TopBar onSearch={handleSearch} />
-      <Section id="container" query={searchQuery} />
+      <Section id="container" info={apiData} />
       <Footer />
     </>
   );
