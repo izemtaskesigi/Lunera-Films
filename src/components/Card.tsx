@@ -5,6 +5,7 @@ interface props {
   imageUrl: string;
   imdb: number;
   suggestion: string;
+  genre: string;
 }
 import "./css/Card.css";
 function card({
@@ -14,15 +15,35 @@ function card({
   imageUrl,
   imdb,
   suggestion,
+  genre,
 }: props) {
   return (
     <div className="card">
-      <h3>{title}</h3>
-      <img src={imageUrl} alt={title} />
-      <p className="imdb">IMDb: {imdb}</p>
-      <p className="info">Release Date: {releaseDate}</p>
-      <p className="info">{overview}</p>
-      <p className="info">{suggestion}</p>
+      <div className="card-content">
+        <img src={imageUrl} alt={title} />
+        <p className="imdb">
+          <b>IMDb:</b> {imdb}
+        </p>
+      </div>
+      <div className="card-content">
+        <h3>{title}</h3>
+        <p className="info">
+          <b>Genres: </b>
+          {genre}
+        </p>
+        <p className="info">
+          <b>Date: </b>
+          {releaseDate}
+        </p>
+        <p className="info">
+          <b>Overview: </b>
+          {overview}
+        </p>
+        <p className="info">
+          <b>Corelation: </b>
+          {suggestion}
+        </p>
+      </div>
     </div>
   );
 }

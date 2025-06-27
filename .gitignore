@@ -6,7 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
+# my key
+backend/.env
+backend/key.json
 node_modules
 dist
 dist-ssr

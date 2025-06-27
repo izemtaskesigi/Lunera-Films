@@ -1,6 +1,6 @@
 .card {
   display: flex;
-  flex-direction: column;
+   flex-direction: row;
   background-color: white;
   border-radius: 16px;  
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -8,6 +8,7 @@
   width: 100%;
   height: 18rem;
   transition: transform 0.3s ease;
+  
 }
 
 .card:hover {
@@ -18,32 +19,40 @@
   position: relative;
   color: #6a1b9a;
   margin-bottom: 10px;
-  font-size: 25px;
+  font-size: 28px;
+  top: -5%;
+  right: 3rem;
 }
 
  .imdb{
   position: relative;
-  left: -25rem;
-  top: -0.5rem;
+  margin-top: 0.5rem;
   color: #444;
   font-size: 1.1rem;
 }
  .info{
   text-align: left;
   position: relative;
-  margin: 0.4rem;
-  left: 10rem;
-  top: -13rem;
+  margin: 0.3rem;
+  
   color: #000000;
   font-size: 1rem;
-  max-width: 30rem;
+  max-width: 80%;
+  top: -10%;
+  margin-left: 1.5rem;
   
 }
 .card img {
   position: relative;
   background-color: #6a1b9a;
-  max-width: 130px;
+  width: 150px;
+  height: 225px;
   border-radius: 10px;
-  
-  top: -1rem;
+  object-fit: cover;
+  flex-shrink: 0; 
+}
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* üstten başla */
 }

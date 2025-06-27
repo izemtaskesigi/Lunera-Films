@@ -2,45 +2,78 @@ import Card from "./Card.tsx";
 import "./css/Section.css";
 interface props {
   id: string;
-  info: any | null;
+  info?: any | null;
+  suggest?: any | null;
 }
-function Section({ id, info }: props) {
+
+function Section({ id, info, suggest }: props) {
+  if (!info) {
+    return;
+  }
+  const genreMap: { [key: number]: string } = {
+    28: "Action",
+    12: "Adventure",
+    16: "Animation",
+    35: "Comedy",
+    80: "Crime",
+    99: "Documentary",
+    18: "Drama",
+    10751: "Family",
+    14: "Fantasy",
+    36: "History",
+    27: "Horror",
+    10402: "Music",
+    9648: "Mystery",
+    10749: "Romance",
+    878: "Science Fiction",
+    10770: "TV Movie",
+    53: "Thriller",
+    10752: "War",
+    37: "Western",
+  };
+  const genreNames = info.genre_ids
+    .map((id: number) => genreMap[id])
+    .filter(Boolean);
+
   const data = {
-    title: "Inception",
-    overview:
-      "A thief who steals corporate secrets through dream-sharing technology is given a chance to erase his criminal record.",
-    release_date: "2010-07-16",
-    poster_path: "/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg",
-    vote_average: 8.8,
-    suggestion: "really good",
+    title: info.original_title,
+    overview: info.overview,
+    poster_path: `https://image.tmdb.org/t/p/w500${info.poster_path}`,
+    vote_average: Number(info.vote_average.toFixed(2)),
+    release_date: info.release_date.slice(0, 4),
+    suggestion: suggest,
+    genre: genreNames.join(",  "),
   };
   return (
     <>
       <section className="examples" id={id}>
         <div className="cards">
           <Card
-            title={info.name}
-            overview={info.status}
+            title={data.title}
+            overview={data.overview}
             releaseDate={data.release_date}
-            imageUrl="https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_FMjpg_UX1000_.jpg"
+            imageUrl={data.poster_path}
             imdb={data.vote_average}
             suggestion={data.suggestion}
+            genre={data.genre}
           />
           <Card
             title={data.title}
             overview={data.overview}
             releaseDate={data.release_date}
-            imageUrl="https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_FMjpg_UX1000_.jpg"
+            imageUrl={data.poster_path}
             imdb={data.vote_average}
             suggestion={data.suggestion}
+            genre={data.genre}
           />
           <Card
             title={data.title}
             overview={data.overview}
             releaseDate={data.release_date}
-            imageUrl="https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_FMjpg_UX1000_.jpg"
+            imageUrl={data.poster_path}
             imdb={data.vote_average}
             suggestion={data.suggestion}
+            genre={data.genre}
           />
         </div>
       </section>

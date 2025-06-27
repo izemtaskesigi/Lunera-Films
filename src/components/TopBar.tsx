@@ -8,7 +8,7 @@ interface props {
 function TopBar({ onSearch, id }: props) {
   return (
     <header id={id}>
-      <h1>🎬 Film Land'e Hoşgeldin!</h1>
+      <h1>🎬 Lanura Films'e Hoşgeldin!</h1>
       <p>Bir konu yaz, sana uygun filmleri bulalım!</p>
       <SearchBar search={onSearch}></SearchBar>
     </header>
