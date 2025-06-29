@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [apiData, setApiData] = useState<any>(null);
+  const [apiData2, setApiData2] = useState<any>(null);
   const [aIData, setAIData] = useState<any>(null);
 
   useEffect(() => {
-    if (apiData) {
+    if (apiData && apiData2) {
       const section = document.getElementById("container");
       if (section) {
         section.style.display = "block";
@@ -20,60 +21,154 @@ function App() {
         }, 50);
       }
     }
-  }, [apiData]);
+  }, [apiData, apiData2]);
 
   const handleSearch = async (query: string) => {
-    console.log("query is" + query);
-    const response = await fetch("http://localhost:3001/api/groq", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        message: query,
-      }),
-    });
+    try {
+      const response = await fetch("http://localhost:3001/api/groq", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: query,
+        }),
+      });
 
-    const data = await response.json();
-    console.log(data.reply);
-    handleMovie(data.reply);
+      const data = await response.json(); //stringi objeye çevridi, sadece fetch ile sunucudan veri çektiğinde kullanılır.
+
+      if (!response.ok) {
+        // Sunucudan hata mesajı geldiyse göster
+        alert("Bilinmeyen bir hata oluştu.");
+        return;
+      }
+      console.log(data.reply);
+      handleMovie(data.reply);
+    } catch (err) {
+      console.error("İstek hatası:", err);
+      alert("Sunucuya bağlanırken bir hata oluştu.");
+    }
   };
 
   const handleMovie = async (query: any) => {
-    console.log("reply is", query);
+    try {
+      const parsedQuery = typeof query === "string" ? JSON.parse(query) : query;
+      // title'ı almaya çalış
+      const title = parsedQuery?.results?.[0]?.title; // ? ara bir değer null olsa bile hata vermesini engeller.
+      console.log(title);
+      if (!title || title === "undefined") {
+        console.error("Title is invalid");
+        alert("Plot is invalid");
+        return;
+      }
 
-    // Eğer query bir string'se parse et
-    const parsedQuery = typeof query === "string" ? JSON.parse(query) : query;
+      setAIData(parsedQuery);
+      console.log("Title being sent:", title);
+      const data = [];
 
-    // title'ı almaya çalış
-    const title = parsedQuery?.results?.[0]?.title;
-    const suggestion = parsedQuery?.results?.[0]?.summary;
-    setAIData(suggestion);
-    console.log("Title being sent:", title);
-
-    if (!title || title === "undefined") {
-      console.error("Title is invalid");
-      return;
+      for (const result of parsedQuery.results) {
+        if (!result.title || result.title === "undefined") {
+          continue;
+        }
+        const response = await fetch("http://localhost:3001/api/search-movie", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query1: JSON.stringify({ title: result.title }),
+          }),
+        });
+        data.push(await response.json());
+        if (!response.ok) {
+          // Sunucudan hata mesajı geldiyse göster
+          alert("Bilinmeyen bir hata oluştu.");
+          return;
+        }
+      }
+      console.log(data);
+      setApiData(data);
+      handletrailer(data);
+    } catch (err) {
+      console.error("İstek hatası:", err);
+      alert("Sunucuya bağlanırken bir hata oluştu.");
     }
+  };
 
-    const response = await fetch("http://localhost:3001/api/search-movie", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ query1: JSON.stringify({ title }) }),
-    });
+  const handletrailer = async (query: any) => {
+    try {
+      const parsedQuery = typeof query === "string" ? JSON.parse(query) : query;
 
-    const data = await response.json();
-    const info = data?.results?.[0];
-    console.log(info);
-    setApiData(info);
+      const movie_ids = parsedQuery
+        .map((result: any) => result?.results?.[0]?.id)
+        .filter(Boolean); // undefined olanları çıkar
+
+      console.log("idler ", movie_ids);
+
+      const trailers = await Promise.all(
+        movie_ids.map(async (id: string) => {
+          try {
+            const response = await fetch(
+              "http://localhost:3001/api/search-trailer",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  query1: JSON.stringify({ id }),
+                }),
+              }
+            );
+
+            const response2 = await response.json();
+
+            if (!response.ok) {
+              console.error("Hata:", response.statusText);
+              return null; // hatalı olanları atla
+            }
+
+            let filtered = response2.results.filter(
+              (item: any) =>
+                item.type === "Trailer" && item.name.includes("Official")
+            );
+
+            if (filtered.length === 0) {
+              filtered = response2.results.filter(
+                (item: any) => item.type === "Trailer"
+              );
+            }
+
+            if (filtered.length === 0) {
+              return null; // hiç trailer yoksa
+            }
+
+            return `https://www.youtube.com/watch?v=${filtered[0].key}`;
+          } catch (e) {
+            console.error("Trailer fetch hatası:", e);
+            return null;
+          }
+        })
+      );
+
+      const validTrailers = trailers.filter(Boolean); // null olanları çıkar
+      console.log(validTrailers);
+      setApiData2(validTrailers);
+    } catch (err) {
+      console.error("İstek hatası:", err);
+      alert("Sunucuya bağlanırken bir hata oluştu.");
+    }
   };
 
   return (
     <>
       <TopBar onSearch={handleSearch} />
-      <Section id="container" info={apiData} suggest={aIData} />
+      <Section
+        id="container"
+        info={apiData}
+        aIinfo={aIData}
+        trailer={apiData2}
+      />
       <Footer />
     </>
   );

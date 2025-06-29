@@ -4,8 +4,12 @@ interface props {
   releaseDate: string;
   imageUrl: string;
   imdb: number;
-  suggestion: string;
+  summary: string;
   genre: string;
+  platforms: string;
+  id: string;
+  link: string;
+  cast: string;
 }
 import "./css/Card.css";
 function card({
@@ -14,11 +18,15 @@ function card({
   releaseDate,
   imageUrl,
   imdb,
-  suggestion,
+  summary,
   genre,
+  platforms,
+  id,
+  link,
+  cast,
 }: props) {
   return (
-    <div className="card">
+    <div className="card" id={id}>
       <div className="card-content">
         <img src={imageUrl} alt={title} />
         <p className="imdb">
@@ -41,7 +49,21 @@ function card({
         </p>
         <p className="info">
           <b>Corelation: </b>
-          {suggestion}
+          {summary}
+        </p>
+        <p className="info">
+          <b>platforms: </b>
+          {platforms}
+        </p>
+        <p className="info">
+          <b>Cast: </b>
+          {cast}
+        </p>
+        <p className="info">
+          <b>Fragman linki: </b>
+          <a href={link} target="_blank">
+            {link}
+          </a>
         </p>
       </div>
     </div>

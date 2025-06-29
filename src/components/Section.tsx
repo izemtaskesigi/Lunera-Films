@@ -3,11 +3,12 @@ import "./css/Section.css";
 interface props {
   id: string;
   info?: any | null;
-  suggest?: any | null;
+  aIinfo?: any | null;
+  trailer?: any | null;
 }
 
-function Section({ id, info, suggest }: props) {
-  if (!info) {
+function Section({ id, info, aIinfo, trailer }: props) {
+  if (!info || !trailer) {
     return;
   }
   const genreMap: { [key: number]: string } = {
@@ -31,50 +32,49 @@ function Section({ id, info, suggest }: props) {
     10752: "War",
     37: "Western",
   };
-  const genreNames = info.genre_ids
-    .map((id: number) => genreMap[id])
-    .filter(Boolean);
+  // map react elemanlarından oluşan bir dizi returnler cardsın içine
+  const cards = info.map((result: any, index: number) => {
+    const movie = result.results[0];
+    const genreNames = movie.genre_ids
+      .map((id: number) => genreMap[id])
+      .filter(Boolean);
 
-  const data = {
-    title: info.original_title,
-    overview: info.overview,
-    poster_path: `https://image.tmdb.org/t/p/w500${info.poster_path}`,
-    vote_average: Number(info.vote_average.toFixed(2)),
-    release_date: info.release_date.slice(0, 4),
-    suggestion: suggest,
-    genre: genreNames.join(",  "),
-  };
+    const data = {
+      title: movie.original_title,
+      overview: movie.overview,
+      poster_path: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+      vote_average: Number(movie.vote_average.toFixed(1)),
+      release_date: movie.release_date?.slice(0, 4),
+      summary: aIinfo.results[index]?.summary || "No summary",
+      genre: genreNames.join(", "),
+      platforms: aIinfo.results[index]?.platforms || [],
+      link: trailer[index] || "aaa",
+      cast: aIinfo.results[index]?.cast,
+    };
+
+    return (
+      <Card
+        key={data.title + index}
+        id={data.title}
+        title={data.title}
+        overview={data.overview}
+        releaseDate={data.release_date}
+        imageUrl={data.poster_path}
+        imdb={data.vote_average}
+        summary={data.summary}
+        genre={data.genre}
+        platforms={data.platforms}
+        link={data.link}
+        cast={data.cast}
+      />
+    );
+  });
+
   return (
     <>
       <section className="examples" id={id}>
-        <div className="cards">
-          <Card
-            title={data.title}
-            overview={data.overview}
-            releaseDate={data.release_date}
-            imageUrl={data.poster_path}
-            imdb={data.vote_average}
-            suggestion={data.suggestion}
-            genre={data.genre}
-          />
-          <Card
-            title={data.title}
-            overview={data.overview}
-            releaseDate={data.release_date}
-            imageUrl={data.poster_path}
-            imdb={data.vote_average}
-            suggestion={data.suggestion}
-            genre={data.genre}
-          />
-          <Card
-            title={data.title}
-            overview={data.overview}
-            releaseDate={data.release_date}
-            imageUrl={data.poster_path}
-            imdb={data.vote_average}
-            suggestion={data.suggestion}
-            genre={data.genre}
-          />
+        <div className="cards" id="container">
+          {cards}
         </div>
       </section>
     </>
