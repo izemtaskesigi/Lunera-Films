@@ -34,7 +34,7 @@ function Section({ id, info, aIinfo, trailer }: props) {
   };
   // map react elemanlarından oluşan bir dizi returnler cardsın içine
   const cards = info.map((result: any, index: number) => {
-    const movie = result.results[0];
+    const movie = result;
     const genreNames = movie.genre_ids
       .map((id: number) => genreMap[id])
       .filter(Boolean);
@@ -48,7 +48,7 @@ function Section({ id, info, aIinfo, trailer }: props) {
       summary: aIinfo.results[index]?.summary || "No summary",
       genre: genreNames.join(", "),
       platforms: aIinfo.results[index]?.platforms || [],
-      link: trailer[index] || "aaa",
+      link: trailer[index] || "no trailers :(",
       cast: aIinfo.results[index]?.cast,
     };
 

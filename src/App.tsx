@@ -42,7 +42,6 @@ function App() {
         alert("Bilinmeyen bir hata oluştu.");
         return;
       }
-      console.log(data.reply);
       handleMovie(data.reply);
     } catch (err) {
       console.error("İstek hatası:", err);
@@ -55,7 +54,7 @@ function App() {
       const parsedQuery = typeof query === "string" ? JSON.parse(query) : query;
       // title'ı almaya çalış
       const title = parsedQuery?.results?.[0]?.title; // ? ara bir değer null olsa bile hata vermesini engeller.
-      console.log(title);
+
       if (!title || title === "undefined") {
         console.error("Title is invalid");
         alert("Plot is invalid");
@@ -63,32 +62,41 @@ function App() {
       }
 
       setAIData(parsedQuery);
-      console.log("Title being sent:", title);
+
       const data = [];
 
       for (const result of parsedQuery.results) {
-        if (!result.title || result.title === "undefined") {
-          continue;
-        }
+        if (!result.title || result.title === "undefined") continue;
+
         const response = await fetch("http://localhost:3001/api/search-movie", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             query1: JSON.stringify({ title: result.title }),
           }),
         });
-        data.push(await response.json());
-        if (!response.ok) {
-          // Sunucudan hata mesajı geldiyse göster
-          alert("Bilinmeyen bir hata oluştu.");
-          return;
+
+        const item = await response.json();
+
+        // boş veya sonuçsuzsa atla
+        if (!item?.results || item.results.length === 0) continue;
+
+        let c = 0;
+        for (const res of item.results) {
+          if (res.release_date?.slice(0, 4) == result.releaseDate) break;
+          c++;
         }
+        if (c == item.results.length - 1) {
+          c = 0;
+        }
+
+        data.push(item.results[c]);
       }
-      console.log(data);
-      setApiData(data);
-      handletrailer(data);
+      const filter = data.filter((item) => item !== undefined);
+      console.log(filter);
+
+      setApiData(filter);
+      handletrailer(filter);
     } catch (err) {
       console.error("İstek hatası:", err);
       alert("Sunucuya bağlanırken bir hata oluştu.");
@@ -100,10 +108,8 @@ function App() {
       const parsedQuery = typeof query === "string" ? JSON.parse(query) : query;
 
       const movie_ids = parsedQuery
-        .map((result: any) => result?.results?.[0]?.id)
+        .map((result: any) => result.id)
         .filter(Boolean); // undefined olanları çıkar
-
-      console.log("idler ", movie_ids);
 
       const trailers = await Promise.all(
         movie_ids.map(async (id: string) => {
@@ -152,7 +158,7 @@ function App() {
       );
 
       const validTrailers = trailers.filter(Boolean); // null olanları çıkar
-      console.log(validTrailers);
+
       setApiData2(validTrailers);
     } catch (err) {
       console.error("İstek hatası:", err);

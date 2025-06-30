@@ -9,7 +9,7 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.json());
 
-const promptTemplate = (userInput: string) => `Sen bir film öneri asistanısın. Görevin, kullanıcının mesajını analiz edip, yalnızca 20 adet uygun film önermektir. Sadece verilen kurallara kesin olarak uymalısın.
+const promptTemplate = (userInput: string) => `Sen bir film öneri asistanısın. Görevin, kullanıcının mesajını analiz edip, yalnızca 25 adet uygun film önermektir. Sadece verilen kurallara kesin olarak uymalısın.
 
 Kurallar:
 
@@ -29,7 +29,7 @@ Sonuç olarak sadece aşağıdaki JSON nesnesini döndür:
 
 2. Eğer mesaj geçerliyse (yani filmle alakalı bir konu, istek, duygu, tür, sahne, karakter vb. içeriyorsa):
 
-- Kullanıcının mesajına en alakalı 20 filmi sırala.
+- Kullanıcının mesajına en alakalı 25 filmi sırala.
 - Her film için:
   - Filmin adını,
   - Filmin konusunu ve kullanıcı mesajıyla ilişkisini ve neden sevebileceğini açıklayan, filmi cazip kılan, en fazla 2 cümlelik bir özet yaz.
@@ -38,6 +38,7 @@ Sonuç olarak sadece aşağıdaki JSON nesnesini döndür:
   - Film açıklamaları spoiler içermemelidir.
   - önerebilceğin en yeni filmleri önermeye çalış.
   - cast yerine başroldaki en çok tanınan en fazla 5 oyuncunun adını soyadını yaz
+  - filmin adı herzaman original title 'ı olsun
 
 3. Sonuç yalnızca aşağıdaki gibi bir JSON nesnesi formatında olmalıdır:
 
@@ -84,7 +85,7 @@ app.post("/api/groq", async (req: Request, res: Response) => {
     const response = await axios.post(
       "https://api.groq.com/openai/v1/chat/completions",
       {
-        model: "meta-llama/llama-4-scout-17b-16e-instruct", // veya llama3-70b-8192
+        model: "meta-llama/llama-4-scout-17b-16e-instruct", 
         messages: [
           { role: "user", content: userMessage }
         ],
@@ -99,11 +100,14 @@ app.post("/api/groq", async (req: Request, res: Response) => {
     );
     
     const groqResponse = response.data.choices[0].message.content;
-    res.json({ reply: groqResponse });
+    const cleaned = groqResponse.trim().replace(/^`+|`+$/g, "");
+
+    res.json({ reply: cleaned });
+
 
   } catch (error: any) {
     console.error("GROQ API hatası:", error.response?.data || error.message);
-    console.log("API key:", process.env.GROQ_API_KEY);
+
     res.status(500).json({ error: "Groq API isteği başarısız" });
   }
 });
@@ -141,14 +145,12 @@ app.post("/api/search-movie", async (req: Request, res: Response) => {
 app.post("/api/search-trailer", async (req: Request, res: Response) => {
 
 const { query1 } = req.body;
-console.log(query1);
   if (!query1) {
     return res.status(400).json({ error: "Query param is required" });
   }
 
   try {
     const movie_id = JSON.parse(query1); 
-    console.log(movie_id);
     if (!movie_id || movie_id === "undefined") {
       return res.status(400).json({ error: "Invalid or missing title" });
     }
@@ -171,13 +173,5 @@ console.log(query1);
 app.listen(PORT, () => {
   console.log(`Server ${PORT} portunda çalışıyor`);
 });
-
-function log (message?:string){
-  if(message){
-    console.log(message);
-  }
-  else
-  console.log("message");
-}
 
 /* filmleri karşılaştırırken hem filmin adını hem çıkış tarihini filtrelesin.*/
