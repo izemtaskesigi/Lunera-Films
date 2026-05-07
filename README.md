@@ -57,8 +57,9 @@ Frontend ve backend'i aynı anda çalıştırmanız gerekmektedir.
 
 | Ana Sayfa | Film Detay |
 | :--- | :--- |
-| ![Ana Sayfa](<img width="1920" height="870" alt="image" src="https://github.com/user-attachments/assets/563900cf-d541-49ea-aff8-66c55ecf4cc6" />
-) | ![Film Detay](https://via.placeholder.com/400x200?text=Film+Detay+Gorunumu) |
+| (<img width="1920" height="870" alt="image" src="https://github.com/user-attachments/assets/563900cf-d541-49ea-aff8-66c55ecf4cc6" />
+) | (<img width="1340" height="502" alt="image" src="https://github.com/user-attachments/assets/e371ce03-8a68-441a-86f6-b136c6496dda" />
+) |
 
 ## 📧 İletişim
 
