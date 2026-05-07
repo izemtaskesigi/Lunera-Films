@@ -57,6 +57,7 @@ Frontend ve backend'i aynı anda çalıştırmanız gerekmektedir.
 
 ### Ana Sayfa 
 <img width="1488" height="778" alt="image" src="https://github.com/user-attachments/assets/a76ed9c2-398d-404b-85d9-6d134f9da260" />
+
 ### Film Detay 
 <img width="1340" height="502" alt="image" src="https://github.com/user-attachments/assets/e371ce03-8a68-441a-86f6-b136c6496dda" />
 
