@@ -1,10 +1,3 @@
-npm install
-    ```
-4.  **Uygulamayı başlatın:**
-    ```bash
-    npm start
-    ```
-
 
 ---
 
