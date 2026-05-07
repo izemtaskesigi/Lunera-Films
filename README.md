@@ -56,21 +56,9 @@ Frontend ve backend'i aynı anda çalıştırmanız gerekmektedir.
 ##  Ekran Görüntüleri
 
 ### Ana Sayfa 
-(<img width="1488" height="778" alt="image" src="https://github.com/user-attachments/assets/a76ed9c2-398d-404b-85d9-6d134f9da260" />
+<img width="1488" height="778" alt="image" src="https://github.com/user-attachments/assets/a76ed9c2-398d-404b-85d9-6d134f9da260" />
 ### Film Detay 
-(<img width="1340" height="502" alt="image" src="https://github.com/user-attachments/assets/e371ce03-8a68-441a-86f6-b136c6496dda" />
-
-
-## 📧 İletişim
-
-Her türlü soru veya öneri için benimle iletişime geçebilirsiniz:
-
-
-Her türlü soru veya öneri için benimle iletişime geçebilirsiniz:
-**İzem Taşkesiği** - [GitHub Profilin](https://github.com/izemtaskesigi)
+<img width="1340" height="502" alt="image" src="https://github.com/user-attachments/assets/e371ce03-8a68-441a-86f6-b136c6496dda" />
 
 ---
 
-### İpucu:
-*   `📸 Ekran Görüntüleri` kısmına projenin resimlerini eklemek, deponu çok daha profesyonel gösterir.
-*   Eğer bir API anahtarı (API Key) kullanıyorsan, bunu `.env` dosyasında saklamayı ve `.gitignore` dosyasına eklemeyi unutma.
