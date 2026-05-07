@@ -36,11 +36,23 @@ Projeyi yerel makinenizde çalıştırmak için şu adımları izleyebilirsiniz:
     ```bash
     npm install
     ```
-4.  **Uygulamayı başlatın:**
+4.  **Frontend uygulamasını çalıştırın:**
     ```bash
-    npm start
+    npm run dev
     ```
-
+5.  **Backend klasörüne geçin:**
+    ```bash
+    cd backend
+    ```
+6.  **Backend bağımlılıklarını yükleyin:**
+    ```bash
+    npm install
+    ```    
+7.  **Backend sunucusunu çalıştırın:**
+    ```bash
+    npm run dev
+    ```     
+Frontend ve backend'i aynı anda çalıştırmanız gerekmektedir.
 ## 📸 Ekran Görüntüleri
 
 | Ana Sayfa | Film Detay |
