@@ -5,9 +5,6 @@ npm install
     npm start
     ```
 
-## 📸 Ekran Görüntüleri
-
-| Ana Sayfa | Film Detay |Tabii, GitHub depon için profesyonel ve etkileyici bir README hazırladım. Bu taslağı `README.md` dosyana doğrudan yapıştırabilir veya içeriği kendine göre özelleştirebilirsin.
 
 ---
 
