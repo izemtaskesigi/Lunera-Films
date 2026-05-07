@@ -1,54 +1,303 @@
-# React + TypeScript + Vite
+npm install
+    ```
+4.  **Uygulamayı başlatın:**
+    ```bash
+    npm start
+    ```
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📸 Ekran Görüntüleri
 
-Currently, two official plugins are available:
+| Ana Sayfa | Film Detay |Tabii, GitHub depon için profesyonel ve etkileyici bir README hazırladım. Bu taslağı `README.md` dosyana doğrudan yapıştırabilir veya içeriği kendine göre özelleştirebilirsin.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+# 🎬 Lunera Films
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Lunera Films, kullanıcıların film ve dizi içeriklerini keşfedebileceği, detaylı bilgiler edinebileceği ve modern bir arayüzle sinema dünyasında gezinebileceği bir web uygulamasıdır.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🚀 Özellikler
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+*   **Geniş İçerik Kütüphanesi:** En güncel ve popüler film/dizi listeleri.
+*   **Detaylı Bilgi:** Yapımların özetleri, oyuncu kadroları, yayın tarihleri ve puanlamaları.
+*   **Arama ve Filtreleme:** Aradığınız içeriğe hızla ulaşmanızı sağlayan kullanıcı dostu arama motoru.
+*   **Modern Arayüz:** Kullanıcı deneyimi odaklı, şık ve responsive (mobil uyumlu) tasarım.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛠️ Kullanılan Teknolojiler
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Bu proje aşağıdaki teknolojiler ve araçlar kullanılarak geliştirilmiştir:
+
+*   **Frontend:** React.js / [Kullandığın diğer kütüphaneler varsa buraya ekle]
+*   **Styling:** CSS3 / SCSS / Tailwind CSS
+*   **API:** [Örn: TMDB API] üzerinden veri çekilmektedir.
+*   **State Management:** [Örn: Context API / Redux]
+
+## ⚙️ Kurulum
+
+Projeyi yerel makinenizde çalıştırmak için şu adımları izleyebilirsiniz:
+
+1.  **Depoyu klonlayın:**
+    ```bash
+    git clone https://github.com/izemtaskesigi/Lunera-Films.git
+    ```
+2.  **Proje dizinine gidin:**
+    ```bash
+    cd Lunera-Films
+    ```
+3.  **Gerekli paketleri yükleyin:**
+    ```bash
+    npm install
+    ```
+4.  **Uygulamayı başlatın:**
+    ```bash
+    npm start
+    ```
+
+## 📸 Ekran Görüntüleri
+
+| Ana Sayfa | Film Detay |
+| :--- | :--- |
+| ![Ana Sayfa](https://via.placeholder.com/400x200?text=Ana+Sayfa+Gorunumu) | ![Film Detay](https://via.placeholder.com/400x200?text=Film+Detay+Gorunumu) |
+
+## 📧 İletişim
+
+Her türlü soru veya öneri için benimle iletişime geçebilirsiniz:
+**Tabii, GitHub depon için profesyonel ve etkileyici bir README hazırladım. Bu taslağı `README.md` dosyana doğrudan yapıştırabilir veya içeriği kendine göre özelleştirebilirsin.
+
+---
+
+# 🎬 Lunera Films
+
+Lunera Films, kullanıcıların film ve dizi içeriklerini keşfedebileceği, detaylı bilgiler edinebileceği ve modern bir arayüzle sinema dünyasında gezinebileceği bir web uygulamasıdır.
+
+## 🚀 Özellikler
+
+*   **Geniş İçerik Kütüphanesi:** En güncel ve popüler film/dizi listeleri.
+*   **Detaylı Bilgi:** Yapımların özetleri, oyuncu kadroları, yayın tarihleri ve puanlamaları.
+*   **Arama ve Filtreleme:** Aradığınız içeriğe hızla ulaşmanızı sağlayan kullanıcı dostu arama motoru.
+*   **Modern Arayüz:** Kullanıcı deneyimi odaklı, şık ve responsive (mobil uyumlu) tasarım.
+
+## 🛠️ Kullanılan Teknolojiler
+
+Bu proje aşağıdaki teknolojiler ve araçlar kullanılarak geliştirilmiştir:
+
+*   **Frontend:** React.js / [Kullandığın diğer kütüphaneler varsa buraya ekle]
+*   **Styling:** CSS3 / SCSS / Tailwind CSS
+*   **API:** [Örn: TMDB API] üzerinden veri çekilmektedir.
+*   **State Management:** [Örn: Context API / Redux]
+
+## ⚙️ Kurulum
+
+Projeyi yerel makinenizde çalıştırmak için şu adımları izleyebilirsiniz:
+
+1.  **Depoyu klonlayın:**
+    ```bash
+    git clone https://github.com/izemtaskesigi/Lunera-Films.git
+    ```
+2.  **Proje dizinine gidin:**
+    ```bash
+    cd Lunera-Films
+    ```
+3.  **Gerekli paketleri yükleyin:**
+    ```bash
+    npm install
+    ```
+4.  **Uygulamayı başlatın:**
+    ```bash
+    npm start
+    ```
+
+## 📸 Ekran Görüntüleri
+
+| Ana Sayfa | Film Detay |
+| :--- | :--- |
+| ![Ana Sayfa](https://via.placeholder.com/400x200?text=Ana+Sayfa+Gorunumu) | ![Film Detay](https://via.placeholder.com/400x200?text=Film+Detay+Gorunumu) |
+
+## 📧 İletişim
+
+Her türlü soru veya öneri için benimle iletişime geçebilirsiniz:
+**İzem Taşkesiği** - [GitHub Profilin](https://github.com/izemtaskesigi)
+
+---
+
+### İpucu:
+*   Tabii, GitHub depon için profesyonel ve etkileyici bir README hazırladım. Bu taslağı `README.md` dosyana doğrudan yapıştırabilir veya içeriği kendine göre özelleştirebilirsin.
+
+---
+
+# 🎬 Lunera Films
+
+Lunera Films, kullanıcıların film ve dizi içeriklerini keşfedebileceği, detaylı bilgiler edinebileceği ve modern bir arayüzle sinema dünyasında gezinebileceği bir web uygulamasıdır.
+
+## 🚀 Özellikler
+
+*   **Geniş İçerik Kütüphanesi:** En güncel ve popüler film/dizi listeleri.
+*   **Detaylı Bilgi:** Yapımların özetleri, oyuncu kadroları, yayın tarihleri ve puanlamaları.
+*   **Arama ve Filtreleme:** Aradığınız içeriğe hızla ulaşmanızı sağlayan kullanıcı dostu arama motoru.
+*   **Modern Arayüz:** Kullanıcı deneyimi odaklı, şık ve responsive (mobil uyumlu) tasarım.
+
+## 🛠️ Kullanılan Teknolojiler
+
+Bu proje aşağıdaki teknolojiler ve araçlar kullanılarak geliştirilmiştir:
+
+*   **Frontend:** React.js / [Kullandığın diğer kütüphaneler varsa buraya ekle]
+*   **Styling:** CSS3 / SCSS / Tailwind CSS
+*   **API:** [Örn: TMDB API] üzerinden veri çekilmektedir.
+*   **State Management:** [Örn: Context API / Redux]
+
+## ⚙️ Kurulum
+
+Projeyi yerel makinenizde çalıştırmak için şu adımları izleyebilirsiniz:
+
+1.  **Depoyu klonlayın:**
+    ```bash
+    git clone https://github.com/izemtaskesigi/Lunera-Films.git
+    ```
+2.  **Proje dizinine gidin:**
+    ```bash
+    cd Lunera-Films
+    ```
+3.  **Gerekli paketleri yükleyin:**
+    ```bash
+    npm install
+    ```
+4.  **Uygulamayı başlatın:**
+    ```bash
+    npm start
+    ```
+
+## 📸 Ekran Görüntüleri
+
+| Ana Sayfa | Film Detay |
+| :--- | :--- |
+| ![Ana Sayfa](https://via.placeholder.com/400x200?text=Ana+Sayfa+Gorunumu) | ![Film Detay](https://via.placeholder.com/400x200?text=Film+Detay+Gorunumu) |
+
+## 📧 İletişim
+
+Her türlü soru veya öneri için benimle iletişime geçebilirsiniz:
+**İzem Taşkesiği** - [GitHub Profilin](https://github.com/izemtaskesigi)
+
+---
+
+### İpucu:
+*   `📸 Ekran Görüntüleri` kısmına projenin resimlerini eklemek, deponu çok daha profesyonel gösterir.
+*   ETabii, GitHub depon için profesyonel ve etkileyici bir README hazırladım. Bu taslağı `README.md` dosyana doğrudan yapıştırabilir veya içeriği kendine göre özelleştirebilirsin.
+
+---
+
+# 🎬 Lunera Films
+
+Lunera Films, kullanıcıların film ve dizi içeriklerini keşfedebileceği, detaylı bilgiler edinebileceği ve modern bir arayüzle sinema dünyasında gezinebileceği bir web uygulamasıdır.
+
+## 🚀 Özellikler
+
+*   **Geniş İçerik Kütüphanesi:** En güncel ve popüler film/dizi listeleri.
+*   **Detaylı Bilgi:** Yapımların özetleri, oyuncu kadroları, yayın tarihleri ve puanlamaları.
+*   **Arama ve Filtreleme:** Aradığınız içeriğe hızla ulaşmanızı sağlayan kullanıcı dostu arama motoru.
+*   **Modern Arayüz:** Kullanıcı deneyimi odaklı, şık ve responsive (mobil uyumlu) tasarım.
+
+## 🛠️ Kullanılan Teknolojiler
+
+Bu proje aşağıdaki teknolojiler ve araçlar kullanılarak geliştirilmiştir:
+
+*   **Frontend:** React.js / [Kullandığın diğer kütüphaneler varsa buraya ekle]
+*   **Styling:** CSS3 / SCSS / Tailwind CSS
+*   **API:** [Örn: TMDB API] üzerinden veri çekilmektedir.
+*   **State Management:** [Örn: Context API / Redux]
+
+## ⚙️ Kurulum
+
+Projeyi yerel makinenizde çalıştırmak için şu adımları izleyebilirsiniz:
+
+1.  **Depoyu klonlayın:**
+    ```bash
+    git clone https://github.com/izemtaskesigi/Lunera-Films.git
+    ```
+2.  **Proje dizinine gidin:**
+    ```bash
+    cd Lunera-Films
+    ```
+3.  **Gerekli paketleri yükleyin:**
+    ```bash
+    npm install
+    ```
+4.  **Uygulamayı başlatın:**
+    ```bash
+    npm start
+    ```
+
+## 📸 Ekran Görüntüleri
+
+| Ana Sayfa | Film Detay |
+| :--- | :--- |
+| ![Ana Sayfa](https://via.placeholder.com/400x200?text=Ana+Sayfa+Gorunumu) | ![Film Detay](https://via.placeholder.com/400x200?text=Film+Detay+Gorunumu) |
+
+## 📧 İletişim
+
+Her türlü soru veya öneri için benimle iletişime geçebilirsiniz:
+**İzem Taşkesiği** - [GitHub Profilin](https://github.com/izemtaskesigi)
+
+---
+
+### İpucu:
+*   `📸 Ekran Görüntüleri` kısmına projenin resimlerini eklemek, deponu çok daha profesyonel gösterir.
+*   Eğer bir API anahtarı (API Key) kullanıyorsan, bunu `.env` dosyasında saklamayı ve `.gitignore` dosyasına eklemeyi unutmaTabii, GitHub depon için profesyonel ve etkileyici bir README hazırladım. Bu taslağı `README.md` dosyana doğrudan yapıştırabilir veya içeriği kendine göre özelleştirebilirsin.
+
+---
+
+# 🎬 Lunera Films
+
+Lunera Films, kullanıcıların film ve dizi içeriklerini keşfedebileceği, detaylı bilgiler edinebileceği ve modern bir arayüzle sinema dünyasında gezinebileceği bir web uygulamasıdır.
+
+## 🚀 Özellikler
+
+*   **Geniş İçerik Kütüphanesi:** En güncel ve popüler film/dizi listeleri.
+*   **Detaylı Bilgi:** Yapımların özetleri, oyuncu kadroları, yayın tarihleri ve puanlamaları.
+*   **Arama ve Filtreleme:** Aradığınız içeriğe hızla ulaşmanızı sağlayan kullanıcı dostu arama motoru.
+*   **Modern Arayüz:** Kullanıcı deneyimi odaklı, şık ve responsive (mobil uyumlu) tasarım.
+
+## 🛠️ Kullanılan Teknolojiler
+
+Bu proje aşağıdaki teknolojiler ve araçlar kullanılarak geliştirilmiştir:
+
+*   **Frontend:** React.js / [Kullandığın diğer kütüphaneler varsa buraya ekle]
+*   **Styling:** CSS3 / SCSS / Tailwind CSS
+*   **API:** [Örn: TMDB API] üzerinden veri çekilmektedir.
+*   **State Management:** [Örn: Context API / Redux]
+
+## ⚙️ Kurulum
+
+Projeyi yerel makinenizde çalıştırmak için şu adımları izleyebilirsiniz:
+
+1.  **Depoyu klonlayın:**
+    ```bash
+    git clone https://github.com/izemtaskesigi/Lunera-Films.git
+    ```
+2.  **Proje dizinine gidin:**
+    ```bash
+    cd Lunera-Films
+    ```
+3.  **Gerekli paketleri yükleyin:**
+    ```bash
+    npm install
+    ```
+4.  **Uygulamayı başlatın:**
+    ```bash
+    npm start
+    ```
+
+## 📸 Ekran Görüntüleri
+
+| Ana Sayfa | Film Detay |
+| :--- | :--- |
+| ![Ana Sayfa](https://via.placeholder.com/400x200?text=Ana+Sayfa+Gorunumu) | ![Film Detay](https://via.placeholder.com/400x200?text=Film+Detay+Gorunumu) |
+
+## 📧 İletişim
+
+Her türlü soru veya öneri için benimle iletişime geçebilirsiniz:
+**İzem Taşkesiği** - [GitHub Profilin](https://github.com/izemtaskesigi)
+
+---
+
+### İpucu:
+*   `📸 Ekran Görüntüleri` kısmına projenin resimlerini eklemek, deponu çok daha profesyonel gösterir.
+*   Eğer bir API anahtarı (API Key) kullanıyorsan, bunu `.env` dosyasında saklamayı ve `.gitignore` dosyasına eklemeyi unutma.
